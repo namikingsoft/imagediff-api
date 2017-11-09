@@ -1,0 +1,43 @@
+{
+  "name": "visual-regression-api",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build -- --watch & sls offline start",
+    "build": "babel src --out-dir lib",
+    "deploy": "npm run build && sls deploy",
+    "type": "flow",
+    "lint": "eslint src",
+    "spec": "NODE_PATH=src jest",
+    "test:watch": "npm run test -- --watch",
+    "test": "npm run type && npm run lint && npm run spec"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "jimp": "^0.2.28",
+    "ramda": "^0.24.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.2",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2016": "^6.24.1",
+    "babel-preset-es2017": "^6.24.1",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-flowtype": "^2.39.1",
+    "eslint-plugin-import": "^2.8.0",
+    "flow-bin": "^0.59.0",
+    "flow-typed": "^2.2.3",
+    "jest": "^21.2.1",
+    "serverless": "^1.24.0",
+    "serverless-offline": "^3.16.0"
+  }
+}
