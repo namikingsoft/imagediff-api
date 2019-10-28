@@ -30,3 +30,12 @@ npm install
 npm run deploy
 ```
 
+Destroy from AWS
+----------------------------------------
+```bash
+export AWS_ACCESS_KEY_ID="(Admin Access)"
+export AWS_SECRET_ACCESS_KEY="(Admin Access)"
+
+npm install
+npm run destroy
+```
