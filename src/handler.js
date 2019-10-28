@@ -14,9 +14,7 @@ type LambdaContext = Object;
 type LambdaCallback = (?Error, ?APIGatewayResponse) => void;
 type LambdaFunction = (LambdaEvent, LambdaContext, LambdaCallback) => any;
 
-export const diff:
-  LambdaFunction
-= async (event, context, callback) => {
+export const diff: LambdaFunction = async (event, context, callback) => {
   const param = JSON.parse(event.body);
   const { image, ...rest } = await diffImage(param);
   const buffer = await new Promise((resolve, reject) => {

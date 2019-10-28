@@ -34,9 +34,7 @@ const defaultDiffParam: DiffParam = {
   colordist: 25,
 };
 
-export const diffImage:
-  DiffParam => Promise<DiffResult>
-= async param => {
+export const diffImage: DiffParam => Promise<DiffResult> = async param => {
   const {
     mode,
     actual,
@@ -72,8 +70,8 @@ export const diffImage:
       ),
     ));
     const isAntialiasedImages = (x, y) => (
-      isAntialiased(actualImage.bitmap)(x, y) ||
-      isAntialiased(expectImage.bitmap)(x, y)
+      isAntialiased(actualImage.bitmap)(x, y)
+      || isAntialiased(expectImage.bitmap)(x, y)
     );
     const compare = compareRadius(
       actualImage.bitmap,

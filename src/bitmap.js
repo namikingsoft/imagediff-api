@@ -20,9 +20,7 @@ export type X = number;
 export type Y = number;
 export type Point = [X, Y];
 
-export const getRGB:
-  (X, Y) => Bitmap => RGB
-= (x, y) => image => {
+export const getRGB: (X, Y) => Bitmap => RGB = (x, y) => image => {
   const pos = (y * image.width + x) * 4;
   const r = image.data[pos];
   const g = image.data[pos + 1];
@@ -30,25 +28,18 @@ export const getRGB:
   return { r, g, b };
 };
 
-export const distRGB:
-  (RGB, RGB) => number
-= (c1, c2) =>
-  Math.abs(c1.r - c2.r) +
-  Math.abs(c1.g - c2.g) +
-  Math.abs(c1.b - c2.b);
+export const distRGB: (RGB, RGB) => number = (c1, c2) => Math.abs(c1.r - c2.r)
+  + Math.abs(c1.g - c2.g)
+  + Math.abs(c1.b - c2.b);
 
-const brightnessDelta:
-  (RGB, RGB) => number
-= (color1, color2) => {
+const brightnessDelta: (RGB, RGB) => number = (color1, color2) => {
   // gamma-corrected luminance of a color (YIQ NTSC transmission color space)
   // see https://www.academia.edu/8200524/DIGITAL_IMAGE_PROCESSING_Digital_Image_Processing_PIKS_Inside_Third_Edition
   const rgb2y = (r, g, b) => r * 0.29889531 + g * 0.58662247 + b * 0.11448223;
   return rgb2y(color1.r, color1.g, color1.b) - rgb2y(color2.r, color2.g, color2.b);
 };
 
-export const isAntialiased:
-  Bitmap => (X, Y) => boolean
-= bitmap => (x1, y1) => {
+export const isAntialiased: Bitmap => (X, Y) => boolean = bitmap => (x1, y1) => {
   const { width, height } = bitmap;
   const color1 = getRGB(x1, y1)(bitmap);
   const x0 = Math.max(x1 - 1, 0);
@@ -84,9 +75,12 @@ export const isAntialiased:
   return true;
 };
 
-export const compareRadius:
-  (Bitmap, Bitmap, number, number | void) => (X, Y) => boolean
-= (bitmap1, bitmap2, radius, sameDist = 0) => (x1, y1) => {
+export const compareRadius: (Bitmap, Bitmap, number, number | void) => (X, Y) => boolean = (
+  bitmap1,
+  bitmap2,
+  radius,
+  sameDist = 0,
+) => (x1, y1) => {
   const { width, height } = bitmap1;
   const x0 = Math.max(x1 - radius, 0);
   const y0 = Math.max(y1 - radius, 0);
