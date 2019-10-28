@@ -7,6 +7,7 @@
     "start": "npm run build -- --watch & sls offline start",
     "build": "babel src --out-dir lib",
     "deploy": "npm run build && sls deploy",
+    "destroy": "sls remove",
     "type": "flow",
     "lint": "eslint src",
     "spec": "jest",
