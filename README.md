@@ -14,7 +14,7 @@ curl --silent \
     \"actual\": \"http://via.placeholder.com/350x150?text=AAA\",
     \"expect\": \"http://via.placeholder.com/350x150?text=BBBB\"
   } " | tr -d '\n ')" \
-  http://localhost:3000/image/diff
+  http://localhost:3000/image/diff \
 | jq -r .image \
 | base64 -D > diff.png
 
