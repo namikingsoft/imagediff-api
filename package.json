@@ -9,7 +9,7 @@
     "deploy": "npm run build && sls deploy",
     "type": "flow",
     "lint": "eslint src",
-    "spec": "NODE_PATH=src jest",
+    "spec": "jest",
     "test:watch": "npm run test -- --watch",
     "test": "npm run type && npm run lint && npm run spec"
   },
