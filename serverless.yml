@@ -22,7 +22,7 @@ plugins:
 
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs10.x
   region: ap-northeast-1
 
 # you can overwrite defaults here
